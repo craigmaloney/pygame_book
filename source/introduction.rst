@@ -1,3 +1,7 @@
+************
+Introduction
+************
+
 In your hands (or on your screen) is yet-another-Pygame book. But what makes this one different from the plethora of thero Pygame books out there?
 
 * This is not an introduction: If you're not familiar with Python this book is not the best place to start. I'd highly recommend checking out Al Sweigart's "Invent with Python" or "Making Games with Pygame". Both will give you a great foundation for the material presented in this book.
