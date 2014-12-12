@@ -9,9 +9,9 @@ Welcome to Pygame Book's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
-  introduction
+  :maxdepth: 2
 
+  introduction
 
 Indices and tables
 ==================
@@ -19,4 +19,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

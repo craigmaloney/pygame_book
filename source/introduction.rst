@@ -1,5 +1,6 @@
+************
 Introduction
-============
+************
 
 In your hands (or on your screen) is yet-another-Pygame book. But what makes this one different from the plethora of thero Pygame books out there?
 
