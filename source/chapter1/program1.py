@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-
 import sys
 import pygame
+from pygame.locals import Rect
 
-SCREENRECT = pygame.locals.Rect(0, 0, 800, 600)
+SCREENRECT = Rect(0, 0, 800, 600)
 
 def main():
     pygame.display.set_mode(SCREENRECT.size)

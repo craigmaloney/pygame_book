@@ -28,9 +28,11 @@ Let's break down the program.
 
 Line 1 tells Unix-basesd systems to search the environment path for a Python interpreter.
 
-Line 3 imports the Python system library (which we'll use to exit the program, along with pygame.quit()).
+Line 2 imports the Python system library (which we'll use to exit the program, along with pygame.quit()).
 
-Line 4 imports the Pygame library.
+Line 3 imports the Pygame library.
+
+Line 4 brings in the Rect constant from the locals module. We'll cover this in more detail in a bit.
 
 .. literalinclude:: program1.py
     :language: python
