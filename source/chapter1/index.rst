@@ -64,4 +64,11 @@ Line 11 is a convention in Python to determine if the program is called from the
 
 Well, there you have it. Your first Pygame program. Not nearly as exciting as you expected, right? Likel most scaffolding this program is only a taste of the final shape of your program. We'll make things more interesting in the next section.
 
+The quick "Hello World"
+-----------------------
 
+The code in the last section is the basic framework but it doesn't do a whole lot. In this section we'll create a program to display a simple greeting.
+
+.. literalinclude:: program2.py
+    :language: python
+    :linenos:
