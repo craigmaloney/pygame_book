@@ -2,7 +2,7 @@
 Introduction
 ************
 
-In your hands (or on your screen) is yet-another-Pygame book. But what makes this one different from the plethora of thero Pygame books out there?
+In your hands (or on your screen) is yet-another-Pygame book. But what makes this one different from the plethora of other Pygame books out there?
 
 * This is not an introduction: If you're not familiar with Python this book is not the best place to start. I'd highly recommend checking out Al Sweigart's "Invent with Python" or "Making Games with Pygame". Both will give you a great foundation for the material presented in this book.
 * No installation instructions. This book assumes you have already installed Python and are familiar with getting Pygame up and working. If you haven't installed Python or Pygame yet now would be a great time to look for your machine specific instructions to install both Python and Pygame. Unfortunately operating systems and installation methods can change faster than a bok can keep up so we'll assume you've already done the hard work.
