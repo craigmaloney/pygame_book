@@ -72,3 +72,37 @@ The code in the last section is the basic framework but it doesn't do a whole lo
 .. literalinclude:: program2.py
     :language: python
     :linenos:
+
+Let's go through this and see what we've added:
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 1-5
+    :lineno-start: 1
+    :linenos:
+
+These lines should look very familiar from program 1.
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 7-7
+    :lineno-start: 7
+    :linenos:
+
+We still have SCREENRECT defining a Pygame Rect constant. Again, we'll cover this in a bit.
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 8-10
+    :lineno-start: 8
+    :linenos:
+
+These lines define several constants using Python tuples. The tuples have three values representing the colors we want. The values in these tuples represent "red", "green" and "blue" values. (There's a fourth value, "alpha" which we'll cover later on). These values give us a "cosmic" shade of purpleish maroon which we'll use for the background color. The Line color is a similar tuple that represents a gray color. (Feel free to substitute these with colors of your choosing.) Lastly we pick a width for our lines.
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 12-14
+    :lineno-start: 12
+    :linenos:
+
+Lines 12 and 13 are the same lines we used in program1 but 
