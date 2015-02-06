@@ -81,7 +81,7 @@ Let's go through this and see what we've added:
     :lineno-start: 1
     :linenos:
 
-These lines should look very familiar from program 1.
+These lines should look very familiar from program 1 with the exception of ``from time import sleep``. Sleep is a function that we'll use later in the program to pause the program for a few seconds.
 
 .. literalinclude:: program2.py
     :language: python
@@ -105,4 +105,53 @@ These lines define several constants using Python tuples. The tuples have three 
     :lineno-start: 12
     :linenos:
 
-Lines 12 and 13 are the same lines we used in program1 but 
+Lines 12 and 13 are the same lines we used in program1. Line 14 sets the title for the window to "Hi". Since we're doing a simple greeting it makes sense to name the window to match our simple greeting. If we didn't set this our window would show up with the default window title (which on this machine defaults to "pygame window"). 
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 16-16
+    :lineno-start: 16 
+    :linenos:
+
+Line 16 takes the color set in BACKGROUND_COLOR (which is the "cosmic" shade we mentioned earlier) and fills the background with that color. Fill will take the specified color and draw it into a surface. In this case our surface is the screen itself which was returned with the ``pygame.display.set_mode`` command. 
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 18-21
+    :lineno-start:  18
+    :linenos:
+
+This section uses the ``pygame.draw.line`` method for drawing a line on the surface. First we give it the target surface to draw on (``surface`` in this instance), and the X, Y coordinates. If you aren't familiar with screen coordinates we'll cover those in a separate section. For now imagine each ``pygame.draw.line`` command is drawing a line given an initial X, Y coordinate. In the case of line 19 we start from the top left of the window, position our cursor 60 pixels to the right and 60 pixels down, and draw down an additional 60 pixels (Y position 120). We do this with the grayish color in LINE_COLOR, and with a line width stored in WIDTH (in this case 5). We repeat the process, moving right 100 pixels from the top left of the screen, and once again draw a line 60 pixels down. That forms the two vertical lines for our "H". Line 21 draws the horizontal line (though not perfectly horizontal, as ``pygame.draw.line`` can draw lines between any two points) and this completes our "H".
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 23-24
+    :lineno-start:  23
+    :linenos:
+
+We then draw a single line for our "I".
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 26-28
+    :lineno-start:  26
+    :linenos:
+
+These lines finish off with two lines representing the exclamation point. Note that the "period" for the exclamation point is five pixels down and five pixels wide. In essence this is one way to draw a square. We could have used a rectangle instead but for now this will suffice.
+
+.. literalinclude:: program2.py
+    :language: python
+    :lines: 30-31
+    :lineno-start: 30
+    :linenos:
+
+Once we have our drawing in place we call ``pygame.display.update``. Up until this point we haven't actually drawn anything in the window; it's all been in a buffer that Pygame keeps off-screen. By calling ``pygame.display.update`` Pygame will take the contents of that buffer and draw them onto the screen.
+
+Why draw to the buffer instead of the directly on the screen? There are a few reasons but the simplest reason is because we can completely draw our frame prior to displaying it. If we didn't do that we could potentially see the lines being drawn onto the screen. While this might be somewhat artistic in this case it can pose problems for scenes with lots of drawing, and can introduce a "flickering" effect where the scene starts to redraw before our eye has had a chance to see the image. Pygame handles the buffering behind the scenes so there's no good way to show you this effect with Pygame but trust me - it's not pretty.
+
+Line 31 will pause for 5 seconds before returning from the ``main`` method. You'll note that you won't be able to close the window until the 5 seconds elapse. We'll cover how to quit a window without waiting or killing the process in the next section.
+
+The rest of the program is the same as program1.
+
+Run the program and gaze at the wonderfully succinct greeting. But it's not terribly interactive is it? Games need interactivity, and in the next section we'll cover getting keyboard events to influence the program.
+
