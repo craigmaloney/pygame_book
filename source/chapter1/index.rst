@@ -153,5 +153,18 @@ Line 31 will pause for 5 seconds before returning from the ``main`` method. You'
 
 The rest of the program is the same as program1.
 
-Run the program and gaze at the wonderfully succinct greeting. But it's not terribly interactive is it? Games need interactivity, and in the next section we'll cover getting keyboard events to influence the program.
+Run the program and gaze at the wonderfully succinct greeting. But it's not terribly interactive is it? Games aren't much without interactivity, and in the next section we'll cover getting keyboard events to influence the program.
+
+Interactivity
+-------------
+
+Interactivity is one of the pillars of any game. Games aren't much fun of you aren't allowed to interact and affect the outcome of the game. Let's make the previous program more interactive by allowing the user to move the greeting around the screen.
+
+Pygame Events
+~~~~~~~~~~~~~
+
+We'll cover more of the Pygame event handling in a later section, but I wanted to give you a cursory understanding of how events work in a game how Pygame handles them.
+
+Using the Pygame framework allows you to use the Pygame Event Queue. This is a queue that gives the program access to events in the queue and allows you to post events to the queue. Pygame ships with the ability to capture certain hardwre events (keyboard, mouse, joystick, etc.) and also has the ability to set timed events, which are handy for moving enemies, updating a countdown timer, or other game-related tasks.
+
 
