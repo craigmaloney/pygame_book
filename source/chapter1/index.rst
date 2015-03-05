@@ -163,8 +163,42 @@ Interactivity is one of the pillars of any game. Games aren't much fun of you ar
 Pygame Events
 ~~~~~~~~~~~~~
 
-We'll cover more of the Pygame event handling in a later section, but I wanted to give you a cursory understanding of how events work in a game how Pygame handles them.
+We'll cover more of the Pygame event handling when we build a full game in the next section, but I wanted to give you a brief overview of how Pygame handles events.
 
 Using the Pygame framework allows you to use the Pygame Event Queue. This is a queue that gives the program access to events in the queue and allows you to post events to the queue. Pygame ships with the ability to capture certain hardwre events (keyboard, mouse, joystick, etc.) and also has the ability to set timed events, which are handy for moving enemies, updating a countdown timer, or other game-related tasks.
 
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 1-65
+    :lineno-start: 1
+    :linenos:
 
+By adding event code we doubled the amount of code, but we also added a few things:
+
+ * Movement via arrow keys
+ * The ability to close the window (without the event code it was impossible to close the window without killing the application
+ * The ability to close the window using the Q or the Escape key
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 1-14
+    :lineno-start: 1
+    :linenos:
+
+The includes in lines 1-5 should look familiar. Lines 6-14 are new though. Let's go through them in turn:
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 6-7
+    :lineno-start: 6
+    :linenos:
+
+The first event constant we import is KEYDOWN, which is the code Pygame sends when a key is pressed down. We use this to determine if a key is currently being pressed.
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 8
+    :lineno-start: 8
+    :linenos:
+
+QUIT is a special event. This is the event that Pygame sends when the window is closed by the window manager or operating system. 
