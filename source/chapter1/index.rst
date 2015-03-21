@@ -211,4 +211,20 @@ QUIT is a special event. This is the event Pygame sends when the window is close
 
 K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, and K_q all map to the cursor keys, the Escape Key, and the Q key on the computer keyboard. Pygame will submit theese keyboard constants to the event queue when the corresponding key is pressed. If we wanted to use different keys (the standard WASD keys of a first person shooter, perhaps) we'd need to import those key events here.
 
-A good number of Pygame programs will simply use ``from pygame.constants import *``. I've chosen to import these constants explicitly as a matter of style (my editor checks imports and will complain if it sees ``import *``). Explicit imports are a better practice than implicit imports, but feel free to use whatever makes your code easier to read for you.
+A large number of Pygame programs found on the Internet use ``from pygame.constants import *`` instead of an explicit import of constants. I've chosen to import these constants explicitly as a matter of style (my editor checks imports and will complain if it sees ``import *``). Explicit imports are a better practice than implicit imports, but feel free to use whatever makes your code easier to read for you.
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 16-20
+    :lineno-start: 16
+    :linenos:
+
+These are some helpful constants we'll use throughout the rest of the program.
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 22-28
+    :lineno-start: 22
+    :linenos:
+
+We start the program with our standard ``pygame.display.set_mode`` to set the display. We'll also set the caption (or "title) for our **hello world** program to "Hello World". 
