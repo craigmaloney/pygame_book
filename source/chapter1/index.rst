@@ -193,7 +193,7 @@ The includes in lines 1-5 should look familiar. Lines 6-14 are new though. Let's
     :lineno-start: 6
     :linenos:
 
-The first event constant we import is KEYDOWN, which is the code Pygame sends when a key is pressed down. We use this to determine if a key is currently being pressed.
+The first event constant imported is KEYDOWN, which is the code Pygame sends when a key is pressed down. We use this event in conjunction with other keyboard events to determine if a key is currently being pressed.
 
 .. literalinclude:: program3.py
     :language: python
@@ -201,4 +201,14 @@ The first event constant we import is KEYDOWN, which is the code Pygame sends wh
     :lineno-start: 8
     :linenos:
 
-QUIT is a special event. This is the event that Pygame sends when the window is closed by the window manager or operating system. 
+QUIT is a special event. This is the event Pygame sends when the window is closed by the window manager or operating system. Without this event our program will be unable to terminate properly when the operating system says "please close" and will need extraordinary measures to kill the process (``kill -9`` in the case of a UNIX-like machine).
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 9-14
+    :lineno-start: 9
+    :linenos:
+
+K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, and K_q all map to the cursor keys, the Escape Key, and the Q key on the computer keyboard. Pygame will submit theese keyboard constants to the event queue when the corresponding key is pressed. If we wanted to use different keys (the standard WASD keys of a first person shooter, perhaps) we'd need to import those key events here.
+
+A good number of Pygame programs will simply use ``from pygame.constants import *``. I've chosen to import these constants explicitly as a matter of style (my editor checks imports and will complain if it sees ``import *``). Explicit imports are a better practice than implicit imports, but feel free to use whatever makes your code easier to read for you.
