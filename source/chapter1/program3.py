@@ -21,7 +21,7 @@ OFFSET = 60
 
 def main():
     surface = pygame.display.set_mode(SCREENRECT.size)
-    pygame.display.set_caption('Hi')
+    pygame.display.set_caption('Hello World')
     pygame.key.set_repeat(1, 1)
     offset_x = OFFSET 
     offset_y = OFFSET 
