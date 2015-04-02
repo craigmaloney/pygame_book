@@ -228,3 +228,17 @@ These are some helpful constants we'll use throughout the rest of the program.
     :linenos:
 
 We start the program with our standard ``pygame.display.set_mode`` to set the display. We'll also set the caption (or "title) for our **hello world** program to "Hello World". 
+
+Line 25 sets the keyboard so it will repeat after one millisecond, and every millisecond thereafter while the key is depressed. 
+
+Lines 26-27 set the offset variables to the default constants (currently 60). Line 28 sets a `running` flag which should remain true until we quit the program.
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 30-32
+    :lineno-start: 30
+    :linenos:
+
+Line 30 continues running the program until `running` is set to `False`. 
+
+Line 31 replaces the background with the BACKGROUND_COLOR.
