@@ -169,7 +169,7 @@ Using the Pygame framework allows you to use the Pygame Event Queue. This is a q
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 1-65
+    :lines: 1-94
     :lineno-start: 1
     :linenos:
 
