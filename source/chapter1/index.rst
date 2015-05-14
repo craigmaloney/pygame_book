@@ -241,4 +241,22 @@ Lines 26-27 set the offset variables to the default constants (currently 60). Li
 
 Line 30 continues running the program until `running` is set to `False`. 
 
-Line 31 replaces the background with the BACKGROUND_COLOR.
+Line 32 replaces the background with the BACKGROUND_COLOR.
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 33-50
+    :lineno-start: 33
+    :linenos:
+
+Here's where the program starts to get interesting. We'll use the `line` method from the Pygame `draw` module. The first argument of the `drawi.line`  method is the surface we'll be drawing on. The next argument is the color of the line that we'll be drawing (stored in the constant `LINE_COLOR`.  The next two arguments are the beginning and end-points of our line, given as Python Tuples. We use `offset_x` and `offset_y` for the origin (which starts off at 60 pixels from the top left corner of the surface and 60 pixels down from the top left of the surface) and then draw a line 60 additional pixels down. The last argument determines the width of the line, which is five pixels in width.
+
+Lines 40 through 50 draw two additional lines, which complete the rest of the letter "H".
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 52-72
+    :lineno-start: 52
+    :linenos:
+
+Lines 52-72 draw the rest of our greeting ("I" and "!"). Note how each of the coordinates reference `offset_x` and `offset_y`. Why we chose to use those as variables will become apparent in the next section.

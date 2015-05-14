@@ -31,16 +31,45 @@ def main():
 
         surface.fill(BACKGROUND_COLOR)
         # Draw the H
-        pygame.draw.line(surface, LINE_COLOR, (offset_x, offset_y), (offset_x, offset_y + 60), WIDTH)
-        pygame.draw.line(surface, LINE_COLOR, (offset_x + 40, offset_y), (offset_x + 40, offset_y + 60), WIDTH)
-        pygame.draw.line(surface, LINE_COLOR, (offset_x, offset_y + 30), (offset_x + 40, offset_y + 20), WIDTH)
+        pygame.draw.line(
+            surface,
+            LINE_COLOR,
+            (offset_x, offset_y),
+            (offset_x, offset_y + 60),
+            WIDTH)
+        pygame.draw.line(surface,
+            LINE_COLOR,
+            (offset_x + 40, offset_y),
+            (offset_x + 40, offset_y + 60),
+            WIDTH)
+        pygame.draw.line(
+            surface,
+            LINE_COLOR,
+            (offset_x, offset_y + 30),
+            (offset_x + 40, offset_y + 20),
+            WIDTH)
 
         # Draw the I
-        pygame.draw.line(surface, LINE_COLOR, (offset_x + 60, offset_y), (offset_x + 60, offset_y + 60), WIDTH)
+        pygame.draw.line(
+            surface,
+            LINE_COLOR,
+            (offset_x + 60, offset_y),
+            (offset_x + 60, offset_y + 60),
+            WIDTH)
 
         # Draw the exclamation point
-        pygame.draw.line(surface, LINE_COLOR, (offset_x + 80, offset_y), (offset_x + 80, offset_y + 50), WIDTH)
-        pygame.draw.line(surface, LINE_COLOR, (offset_x + 80, offset_y + 55), (offset_x + 80, offset_y + 60), WIDTH)
+        pygame.draw.line(
+            surface,
+            LINE_COLOR,
+            (offset_x + 80, offset_y),
+            (offset_x + 80, offset_y + 50),
+            WIDTH)
+        pygame.draw.line(
+            surface,
+            LINE_COLOR,
+            (offset_x + 80, offset_y + 55),
+            (offset_x + 80, offset_y + 60),
+            WIDTH)
         
         events = pygame.event.get()
         for e in events:
