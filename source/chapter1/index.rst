@@ -260,3 +260,6 @@ Lines 40 through 50 draw two additional lines, which complete the rest of the le
     :linenos:
 
 Lines 52-72 draw the rest of our greeting ("I" and "!"). Note how each of the coordinates reference `offset_x` and `offset_y`. Why we chose to use those as variables will become apparent in the next section.
+
+Pygame Keyboard Events
+----------------------
