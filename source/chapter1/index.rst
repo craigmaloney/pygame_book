@@ -261,5 +261,19 @@ Lines 40 through 50 draw two additional lines, which complete the rest of the le
 
 Lines 52-72 draw the rest of our greeting ("I" and "!"). Note how each of the coordinates reference `offset_x` and `offset_y`. Why we chose to use those as variables will become apparent in the next section.
 
-Pygame Keyboard Events
-----------------------
+Pygame Keyboard Events and the Event Queue
+------------------------------------------
+
+Interactivity is key to any game and the next section of code takes our program from a program that simply displays "HI!" and transforms it into an interactive program. The Pygame event queue is central to all of the games in this book so we'll take a closer look at how to take the events that are in the event queue and process them to make our "HI!" move around the screen.
+
+The Pygame event queue is a queue created when a Pygame program is instantiated. The queue takes a combination of keyboard, joystick and window-manager events and presents them in a way that our Pygame code can use. The ``pygame.event.get()`` call will pop the events off of the event queue. The events are in the form of a list, which we can then iterate over.
+
+Events come in several types. Our program uses the KEYDOWN event, which is an event that fires off when the user presses a key down on the keyboard. We check the event type (KEYDOWN) prior to checking the key value itself. We import the constant "KEYDOWN" from the Pygame constants rather than check the event type against the number KEYDOWN represents (2 as of this writing). It's handy to use the constants rather than trying to remember the numeric representation. 
+
+Let's step through the code itself to see what is happening:
+
+.. literalinclude:: program3.py
+    :language: python
+    :lines: 74-87
+    :lineno-start: 74
+    :linenos:
