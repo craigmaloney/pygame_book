@@ -266,9 +266,47 @@ Pygame Keyboard Events and the Event Queue
 
 Interactivity is key to any game and the next section of code takes our program from a program that simply displays "HI!" and transforms it into an interactive program. The Pygame event queue is central to all of the games in this book so we'll take a closer look at how to take the events that are in the event queue and process them to make our "HI!" move around the screen.
 
-The Pygame event queue is a queue created when a Pygame program is instantiated. The queue takes a combination of keyboard, joystick and window-manager events and presents them in a way that our Pygame code can use. The ``pygame.event.get()`` call will pop the events off of the event queue. The events are in the form of a list, which we can then iterate over.
+The Pygame event queue is a queue created when a Pygame program is instantiated. The queue contains a combination of keyboard, joystick, window-manager, and other events and presents them in a way that our Pygame code can use. The ``pygame.event.get()`` call will pop the events off of the event queue. The events are in the form of a list, which we can then iterate over. Like most queues there is a finite number of events that can be stored in the queue so it's critical to continually poll the queue. Running the ``.get()`` method will pull off all of the events waiting in the queue. It's a good idea to poll ths queue throughout the execution of the code lest we overflow the queue with events.
+
+There are many different methods for interacting with the queue. We'll discuss more of them later in the book. For now we'll only cover using ``.get()`` to grab all pending events.
 
 Events come in several types. Our program uses the KEYDOWN event, which is an event that fires off when the user presses a key down on the keyboard. We check the event type (KEYDOWN) prior to checking the key value itself. We import the constant "KEYDOWN" from the Pygame constants rather than check the event type against the number KEYDOWN represents (2 as of this writing). It's handy to use the constants rather than trying to remember the numeric representation. 
+
++----------------+---------------------+
+|Event Type      |Additional attributes|
++================+=====================+
+|QUIT            |none                 |
++----------------+---------------------+
+|ACTIVEEVENT     |gain, state          |
++----------------+---------------------+
+|KEYDOWN         |unicode, key, mod    |
++----------------+---------------------+
+|KEYUP           |key, mod             |
++----------------+---------------------+
+|MOUSEMOTION     |pos, rel, buttons    |
++----------------+---------------------+
+|MOUSEBUTTONUP   |pos, button          |
++----------------+---------------------+
+|MOUSEBUTTONDOWN |pos, button          |
++----------------+---------------------+
+|JOYAXISMOTION   |joy, axis, value     |
++----------------+---------------------+
+|JOYBALLMOTION   |joy, ball, rel       |
++----------------+---------------------+
+|JOYHATMOTION    |joy, hat, value      |
++----------------+---------------------+
+|JOYBUTTONUP     |joy, button          |
++----------------+---------------------+
+|JOYBUTTONDOWN   |joy, button          |
++----------------+---------------------+
+|VIDEORESIZE     |size, w, h           |
++----------------+---------------------+
+|VIDEOEXPOSE     |none                 |
++----------------+---------------------+
+|USEREVENT       |code                 |
++----------------+---------------------+
+
+We'll talk about the other event types and how to handle them later in the book but for now this list should give you a good idea of the sorts of events that Pygame handles. Not only are Joysticks, Keyboards, and Mice given events but also events for whether the window was resized or contains focus. There's also a USEREVENT that we'll find useful for triggering other parts of our code.
 
 Let's step through the code itself to see what is happening:
 
@@ -277,3 +315,5 @@ Let's step through the code itself to see what is happening:
     :lines: 74-87
     :lineno-start: 74
     :linenos:
+
+Line 74 copies the events that are waiting in the pygame event queue since the last time the events were picked up. The event queue holds all of the events since the program was initialized, and continues receiving events for as long as the application is running. The ``events`` variable stores the list of those events for us to process in the upcoming block of code.  
