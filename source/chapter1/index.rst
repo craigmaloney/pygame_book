@@ -317,3 +317,5 @@ Let's step through the code itself to see what is happening:
     :linenos:
 
 Line 74 copies the events that are waiting in the pygame event queue since the last time the events were picked up. The event queue holds all of the events since the program was initialized, and continues receiving events for as long as the application is running. The ``events`` variable stores the list of those events for us to process in the upcoming block of code.  
+
+Line 

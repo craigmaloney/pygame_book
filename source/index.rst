@@ -13,6 +13,7 @@ Contents:
 
   introduction/introduction
   chapter1/index
+  chapter2/index
 
 Indices and tables
 ==================
