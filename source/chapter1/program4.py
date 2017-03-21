@@ -29,6 +29,7 @@ def main():
 
     while running:
 
+        clock = pygame.time.Clock()
         surface.fill(BACKGROUND_COLOR)
         # Draw the H
         pygame.draw.line(
@@ -88,6 +89,7 @@ def main():
                 offset_x += 1
 
         pygame.display.update()
+        clock.tick(60)
 
 if __name__ == '__main__':
     main()

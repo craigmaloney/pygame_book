@@ -9,6 +9,7 @@ BACKGROUND_COLOR = (116, 65, 80)
 LINE_COLOR = (234, 232, 211)
 WIDTH = 5
 
+
 def main():
     surface = pygame.display.set_mode(SCREENRECT.size)
     pygame.display.set_caption('Hi')

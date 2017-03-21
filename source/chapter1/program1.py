@@ -5,6 +5,7 @@ from pygame.locals import Rect
 
 SCREENRECT = Rect(0, 0, 800, 600)
 
+
 def main():
     pygame.display.set_mode(SCREENRECT.size)
 

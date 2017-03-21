@@ -44,25 +44,25 @@ Line 6 creates a constant called SCREENRECT which contains a Pygame Rect object 
 
 .. literalinclude:: program1.py
     :language: python
-    :lines: 8-9
+    :lines: 8-10
     :lineno-start: 8
     :linenos:
 
-Line 8 defines the main function for our Pygame program. This will be called on line 12 if we're running from the command line (which we are).
+Line 9 defines the main function for our Pygame program. This will be called on line 12 if we're running from the command line (which we are).
 
-Line 9 does the heavy lifting for our current Pygame program. It first determines the size of SCREENRECT (which returns a tuple of (800, 600) and then uses that to set the dimensions for our display. There's more options that we'll cover later on but for now it's enough to know that the default mode for the display is to create a window of a certain dimension (in this case 800x600).
+Line 10 does the heavy lifting for our current Pygame program. It first determines the size of SCREENRECT (which returns a tuple of (800, 600) and then uses that to set the dimensions for our display. There's more options that we'll cover later on but for now it's enough to know that the default mode for the display is to create a window of a certain dimension (in this case 800x600).
 
 Once the display is created there's nothing to keep it running so the function returns.
 
 .. literalinclude:: program1.py
     :language: python
-    :lines: 11-14
-    :lineno-start: 11
+    :lines: 12-15
+    :lineno-start: 12
     :linenos:
 
-Line 11 is a convention in Python to determine if the program is called from the command-line. Essentially it checks to see if the ``__name__`` value has been set to "__main__", which will happen whenever the module we've created is being run as the main program. For now it's enough to know that this will always be true and will then continue running the code below (Lines 12-14). Line 12 calls the ``main`` function (Line 8) and proceeds to set up the display. Once the display is created there's nothing keeping Pygame from continually refreshing that display so it then closes the display and exits the ``main`` function. ``pygame.quit()`` on line 13 cleans up any extraneous Pygame variables and ``sys.exit()`` causes the program to terminate (Note: ``sys.exit()`` is completely optional here as the program will end after executing the last statement on Line 13.)
+Line 12 is a convention in Python to determine if the program is called from the command-line. Essentially it checks to see if the ``__name__`` value has been set to "__main__", which will happen whenever the module we've created is being run as the main program. For now it's enough to know that this will always be true and will then continue running the code below (Lines 12-14). Line 12 calls the ``main`` function (Line 8) and proceeds to set up the display. Once the display is created there's nothing keeping Pygame from continually refreshing that display so it then closes the display and exits the ``main`` function. ``pygame.quit()`` on line 13 cleans up any extraneous Pygame variables and ``sys.exit()`` causes the program to terminate (Note: ``sys.exit()`` is completely optional here as the program will end after executing the last statement on Line 13.)
 
-Well, there you have it. Your first Pygame program. Not nearly as exciting as you expected, right? Likel most scaffolding this program is only a taste of the final shape of your program. We'll make things more interesting in the next section.
+Well, there you have it; your first Pygame program. Not nearly as exciting as you expected, right? Like most scaffolding this program is only a taste of the final shape of your program. We'll make things more interesting in the next section.
 
 The quick "Hello World"
 -----------------------
@@ -101,55 +101,55 @@ These lines define several constants using Python tuples. The tuples have three 
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 12-14
-    :lineno-start: 12
+    :lines: 13-15
+    :lineno-start: 13
     :linenos:
 
-Lines 12 and 13 are the same lines we used in program1. Line 14 sets the title for the window to "Hi". Since we're doing a simple greeting it makes sense to name the window to match our simple greeting. If we didn't set this our window would show up with the default window title (which on this machine defaults to "pygame window"). 
+Lines 13 and 14 are the same lines we used in program1. Line 15 sets the title for the window to "Hi". Since we're doing a simple greeting it makes sense to name the window to match our simple greeting. If we didn't set this our window would show up with the default window title (which on this machine defaults to "pygame window"). 
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 16-16
-    :lineno-start: 16 
+    :lines: 17-15
+    :lineno-start: 17 
     :linenos:
 
-Line 16 takes the color set in BACKGROUND_COLOR (which is the "cosmic" shade we mentioned earlier) and fills the background with that color. Fill will take the specified color and draw it into a surface. In this case our surface is the screen itself which was returned with the ``pygame.display.set_mode`` command. 
+Line 17 takes the color set in BACKGROUND_COLOR (which is the "cosmic" shade we mentioned earlier) and fills the background with that color. Fill will take the specified color and draw it into a surface. In this case our surface is the screen itself which was returned with the ``pygame.display.set_mode`` command. 
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 18-21
-    :lineno-start:  18
+    :lines: 19-20
+    :lineno-start:  19
     :linenos:
 
-This section uses the ``pygame.draw.line`` method for drawing a line on the surface. First we give it the target surface to draw on (``surface`` in this instance), and the X, Y coordinates. If you aren't familiar with screen coordinates we'll cover those in a separate section. For now imagine each ``pygame.draw.line`` command is drawing a line given an initial X, Y coordinate. In the case of line 19 we start from the top left of the window, position our cursor 60 pixels to the right and 60 pixels down, and draw down an additional 60 pixels (Y position 120). We do this with the grayish color in LINE_COLOR, and with a line width stored in WIDTH (in this case 5). We repeat the process, moving right 100 pixels from the top left of the screen, and once again draw a line 60 pixels down. That forms the two vertical lines for our "H". Line 21 draws the horizontal line (though not perfectly horizontal, as ``pygame.draw.line`` can draw lines between any two points) and this completes our "H".
+This section uses the ``pygame.draw.line`` method for drawing a line on the surface. First we give it the target surface to draw on (``surface`` in this instance), and the X, Y coordinates. If you aren't familiar with screen coordinates we'll cover those in a separate section. For now imagine each ``pygame.draw.line`` command is drawing a line given an initial X, Y coordinate. In the case of line 20 we start from the top left of the window, position our cursor 60 pixels to the right and 60 pixels down, and draw down an additional 60 pixels (Y position 120). We do this with the grayish color in LINE_COLOR, and with a line width stored in WIDTH (in this case 5). We repeat the process, moving right 100 pixels from the top left of the screen, and once again draw a line 60 pixels down. That forms the two vertical lines for our "H". Line 22 draws the horizontal line (though not perfectly horizontal, as ``pygame.draw.line`` can draw lines between any two points) and this completes our "H".
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 23-24
-    :lineno-start:  23
+    :lines: 24-23
+    :lineno-start:  24
     :linenos:
 
 We then draw a single line for our "I".
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 26-28
-    :lineno-start:  26
+    :lines: 27-29
+    :lineno-start:  27
     :linenos:
 
 These lines finish off with two lines representing the exclamation point. Note that the "period" for the exclamation point is five pixels down and five pixels wide. In essence this is one way to draw a square. We could have used a rectangle instead but for now this will suffice.
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 30-31
-    :lineno-start: 30
+    :lines: 31-32
+    :lineno-start: 31
     :linenos:
 
 Once we have our drawing in place we call ``pygame.display.update``. Up until this point we haven't actually drawn anything in the window; it's all been in a buffer that Pygame keeps off-screen. By calling ``pygame.display.update`` Pygame will take the contents of that buffer and draw them onto the screen.
 
 Why draw to the buffer instead of the directly on the screen? There are a few reasons but the simplest reason is because we can completely draw our frame prior to displaying it. If we didn't do that we could potentially see the lines being drawn onto the screen. While this might be somewhat artistic in this case it can pose problems for scenes with lots of drawing, and can introduce a "flickering" effect where the scene starts to redraw before our eye has had a chance to see the image. Pygame handles the buffering behind the scenes so there's no good way to show you this effect with Pygame but trust me - it's not pretty.
 
-Line 31 will pause for 5 seconds before returning from the ``main`` method. You'll note that you won't be able to close the window until the 5 seconds elapse. We'll cover how to quit a window without waiting or killing the process in the next section.
+Line 32 will pause for 5 seconds before returning from the ``main`` method. You'll note that you won't be able to close the window until the 5 seconds elapse. We'll cover how to quit a window without waiting or killing the process in the next section.
 
 The rest of the program is the same as program1.
 
@@ -185,28 +185,28 @@ By adding event code we doubled the amount of code, but we also added a few thin
     :lineno-start: 1
     :linenos:
 
-The includes in lines 1-5 should look familiar. Lines 6-14 are new though. Let's go through them in turn:
+The includes in lines 1-4 should look familiar. Lines 5-13 are new though. Let's go through them in turn:
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 6-7
-    :lineno-start: 6
+    :lines: 5-6
+    :lineno-start: 5
     :linenos:
 
 The first event constant imported is KEYDOWN, which is the code Pygame sends when a key is pressed down. We use this event in conjunction with other keyboard events to determine if a key is currently being pressed.
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 8
-    :lineno-start: 8
+    :lines: 7
+    :lineno-start: 7
     :linenos:
 
 QUIT is a special event. This is the event Pygame sends when the window is closed by the window manager or operating system. Without this event our program will be unable to terminate properly when the operating system says "please close" and will need extraordinary measures to kill the process (``kill -9`` in the case of a UNIX-like machine).
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 9-14
-    :lineno-start: 9
+    :lines: 8-13
+    :lineno-start: 8
     :linenos:
 
 K_UP, K_DOWN, K_LEFT, K_RIGHT, K_ESCAPE, and K_q all map to the cursor keys, the Escape Key, and the Q key on the computer keyboard. Pygame will submit theese keyboard constants to the event queue when the corresponding key is pressed. If we wanted to use different keys (the standard WASD keys of a first person shooter, perhaps) we'd need to import those key events here.
@@ -215,8 +215,8 @@ A large number of Pygame programs found on the Internet use ``from pygame.consta
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 16-20
-    :lineno-start: 16
+    :lines: 15-19
+    :lineno-start: 15
     :linenos:
 
 These are some helpful constants we'll use throughout the rest of the program.
@@ -245,21 +245,21 @@ Line 32 replaces the background with the BACKGROUND_COLOR.
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 33-50
+    :lines: 33-51
     :lineno-start: 33
     :linenos:
 
 Here's where the program starts to get interesting. We'll use the `line` method from the Pygame `draw` module. The first argument of the `drawi.line`  method is the surface we'll be drawing on. The next argument is the color of the line that we'll be drawing (stored in the constant `LINE_COLOR`.  The next two arguments are the beginning and end-points of our line, given as Python Tuples. We use `offset_x` and `offset_y` for the origin (which starts off at 60 pixels from the top left corner of the surface and 60 pixels down from the top left of the surface) and then draw a line 60 additional pixels down. The last argument determines the width of the line, which is five pixels in width.
 
-Lines 40 through 50 draw two additional lines, which complete the rest of the letter "H".
+Lines 40 through 51 draw two additional lines, which complete the rest of the letter "H".
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 52-72
+    :lines: 53-73
     :lineno-start: 52
     :linenos:
 
-Lines 52-72 draw the rest of our greeting ("I" and "!"). Note how each of the coordinates reference `offset_x` and `offset_y`. Why we chose to use those as variables will become apparent in the next section.
+Lines 53-73 draw the rest of our greeting ("I" and "!"). Note how each of the coordinates reference `offset_x` and `offset_y`. Why we chose to use those as variables will become apparent in the next section.
 
 Pygame Keyboard Events and the Event Queue
 ------------------------------------------
@@ -312,10 +312,14 @@ Let's step through the code itself to see what is happening:
 
 .. literalinclude:: program3.py
     :language: python
-    :lines: 74-87
-    :lineno-start: 74
+    :lines: 75-88
+    :lineno-start: 75
     :linenos:
 
-Line 74 copies the events that are waiting in the pygame event queue since the last time the events were picked up. The event queue holds all of the events since the program was initialized, and continues receiving events for as long as the application is running. The ``events`` variable stores the list of those events for us to process in the upcoming block of code.  
+Line 75 copies the events that are waiting in the pygame event queue since the last time the events were picked up. The event queue holds all of the events since the program was initialized, and continues receiving events for as long as the application is running. The ``events`` variable stores the list of those events for us to process in the upcoming block of code.  
 
-Line 
+Line 76 pulls out all of the events in the event queue in-turn. Lines 77-87 compare them with the event constants that we imported via the Pygame library. Each of these constants has a certain integer number associated with it. In this version of Pygame the ``QUIT`` constant equals 12. So whenever the event type in the event queue has the number 12 it means that a ``QUIT`` event type was triggered. It's up to the pygame program to do something useful with this event (which our program does by setting the ``running`` boolean flag to ``False`. (Line 77-78). 
+
+It's best to use the Pygame constants rather than using the associated numbers, as the numbers for the events may change in later versions. Plus using ``QUIT`` or ``KEYDOWN`` is a lot more useful in your code than the associated number ("What does 12 mean again?")
+
+Lines 79-88 determine if a keyboard event happened. 
