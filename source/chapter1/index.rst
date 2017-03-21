@@ -44,8 +44,8 @@ Line 6 creates a constant called SCREENRECT which contains a Pygame Rect object 
 
 .. literalinclude:: program1.py
     :language: python
-    :lines: 8-10
-    :lineno-start: 8
+    :lines: 9-10
+    :lineno-start: 9
     :linenos:
 
 Line 9 defines the main function for our Pygame program. This will be called on line 12 if we're running from the command line (which we are).
@@ -56,11 +56,11 @@ Once the display is created there's nothing to keep it running so the function r
 
 .. literalinclude:: program1.py
     :language: python
-    :lines: 12-15
+    :lines: 12-16
     :lineno-start: 12
     :linenos:
 
-Line 12 is a convention in Python to determine if the program is called from the command-line. Essentially it checks to see if the ``__name__`` value has been set to "__main__", which will happen whenever the module we've created is being run as the main program. For now it's enough to know that this will always be true and will then continue running the code below (Lines 12-14). Line 12 calls the ``main`` function (Line 8) and proceeds to set up the display. Once the display is created there's nothing keeping Pygame from continually refreshing that display so it then closes the display and exits the ``main`` function. ``pygame.quit()`` on line 13 cleans up any extraneous Pygame variables and ``sys.exit()`` causes the program to terminate (Note: ``sys.exit()`` is completely optional here as the program will end after executing the last statement on Line 13.)
+Line 12 is a convention in Python to determine if the program is called from the command-line. Essentially it checks to see if the ``__name__`` value has been set to "__main__", which will happen whenever the module we've created is being run as the main program. For now it's enough to know that this will always be true and will then continue running the code below (Lines 13-16). Line 13 initializes the Pygame modules that we've called (more on this later). Line 14 calls the ``main`` function (Line 8) and proceeds to set up the display. Once the display is created there's nothing keeping Pygame from continually refreshing that display so it then closes the display and exits the ``main`` function. ``pygame.quit()`` on line 15 cleans up any extraneous Pygame variables and ``sys.exit()`` causes the program to terminate (Note: ``sys.exit()`` is completely optional here as the program will end after executing the last statement on Line 15.)
 
 Well, there you have it; your first Pygame program. Not nearly as exciting as you expected, right? Like most scaffolding this program is only a taste of the final shape of your program. We'll make things more interesting in the next section.
 
@@ -109,7 +109,7 @@ Lines 13 and 14 are the same lines we used in program1. Line 15 sets the title f
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 17-15
+    :lines: 17-17
     :lineno-start: 17 
     :linenos:
 
@@ -117,7 +117,7 @@ Line 17 takes the color set in BACKGROUND_COLOR (which is the "cosmic" shade we 
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 19-20
+    :lines: 19-22
     :lineno-start:  19
     :linenos:
 
@@ -125,7 +125,7 @@ This section uses the ``pygame.draw.line`` method for drawing a line on the surf
 
 .. literalinclude:: program2.py
     :language: python
-    :lines: 24-23
+    :lines: 24-25
     :lineno-start:  24
     :linenos:
 
@@ -306,9 +306,10 @@ Events come in several types. Our program uses the KEYDOWN event, which is an ev
 |USEREVENT       |code                 |
 +----------------+---------------------+
 
+
 We'll talk about the other event types and how to handle them later in the book but for now this list should give you a good idea of the sorts of events that Pygame handles. Not only are Joysticks, Keyboards, and Mice given events but also events for whether the window was resized or contains focus. There's also a USEREVENT that we'll find useful for triggering other parts of our code.
 
-Let's step through the code itself to see what is happening:
+Let's step through the code to see what is happening:
 
 .. literalinclude:: program3.py
     :language: python
@@ -318,8 +319,56 @@ Let's step through the code itself to see what is happening:
 
 Line 75 copies the events that are waiting in the pygame event queue since the last time the events were picked up. The event queue holds all of the events since the program was initialized, and continues receiving events for as long as the application is running. The ``events`` variable stores the list of those events for us to process in the upcoming block of code.  
 
-Line 76 pulls out all of the events in the event queue in-turn. Lines 77-87 compare them with the event constants that we imported via the Pygame library. Each of these constants has a certain integer number associated with it. In this version of Pygame the ``QUIT`` constant equals 12. So whenever the event type in the event queue has the number 12 it means that a ``QUIT`` event type was triggered. It's up to the pygame program to do something useful with this event (which our program does by setting the ``running`` boolean flag to ``False`. (Line 77-78). 
+Line 76 pulls out all of the events in the event queue in-turn. Lines 77-87 compare them with the event constants that we imported via the Pygame library. Each of these constants has a certain integer number associated with it. In this version of Pygame the ``QUIT`` constant equals 12. So whenever the event type in the event queue has the number 12 it means that a ``QUIT`` event type was triggered. It's up to the pygame program to do something useful with this event (which our program does by setting the ``running`` boolean flag to ``False``. (Line 77-78). 
 
 It's best to use the Pygame constants rather than using the associated numbers, as the numbers for the events may change in later versions. Plus using ``QUIT`` or ``KEYDOWN`` is a lot more useful in your code than the associated number ("What does 12 mean again?")
 
-Lines 79-88 determine if a keyboard event happened. 
+Lines 79-88 determine if a keyboard event happened. For keyboard events we'll need two pieces of information from the event queue. The first is the ``KEYDOWN`` event to determine that a key was pressed. When we determine that a key was pressed we'll need the read the event dictionary to see what key was pressed. If we add a print statement to see what is inside of ``e`` when the right arrow key is depressed we'll see something like this:
+
+``<Event(2-KeyDown {'scancode': 114, 'key': 275, 'unicode': u'', 'mod': 0})>``
+
+Right now we're only interested in the key that was depressed, so ``e.key`` is used to compare against the constants for ``K_UP``, ``K_DOWN``, ``K_LEFT``, and ``K_RIGHT``. If we look at ``pygame.constants.K_RIGHT`` we'll see that it equals 275, so this event would match both of the conditions for ``e.type==KEYDOWN`` and ``e.key==K_RIGHT``. That means that the offset for drawing our greeting will be moved over one space to the right (``offset_x += 1``).
+
+We also look for two other keys (Escape and Q) to determine if the program should exit. When either of those keys are depressed we set ``running = False`` to exit the loop.
+
+We'll talk more about how the event queue works in later chapters, but for now this is enough for us to get our greeting to move around the screen.
+
+We have one last thing to cover before we move on to our first game.
+
+Keeping a consistent speed
+--------------------------
+
+Our program works, and it seems to work well. There is one problem with it that we haven't covered yet. If you run this program on different machines you'll notice that it will display at different speeds. This isn't that big of a problem for our small demo program, but our game programs will need more consistent speed in order to run. It's no fun if a player feels like they're moving through your game in slow-motion, nor is it fun if the game ends before the player can make their first move.
+
+We'll add ``pygame.clock`` to slow things down. This might seem counter-intuitive at first: games are supposed to be fast, yet we're going to slow things down? Why would we do that? But what we're doing is we're ensuring that our games run at a certain frame-rate.  Frame-rate is how many frames-per-second the computer will draw on the screen. Right now the computer is drawing the frames on the screen as fast as it possibly can, but we can limit how many frames-per-second are drawn by using ``pygame.clock.tick(60)``. This tells Pygame "compute how many miliseconds it was since the last frame and if that equals 60 frames per second then draw the next frame). This ensures that the program will never run more than 60 frames-per-second. 
+
+This may seem a little strange at first but it's a common-enough mistake that all Pygame developers run into. We'll cover this in more detail with our next game. For now we'll just show where to put the statements in our program.
+
+.. literalinclude:: program4.py
+    :language: python
+    :linenos:
+
+This is the same program as program3.py, but with two additional lines:
+
+.. literalinclude:: program4.py
+    :language: python
+    :lines: 28-31
+    :lineno-start: 28
+    :linenos:
+
+We initialize the clock in line 29 before going into the main game loop. This will keep track of the time elapsed while the program runs. This is used in tandem with the following line (at the end of our main game loop):
+
+.. literalinclude:: program4.py
+    :language: python
+    :lines: 91-92
+    :lineno-start: 91
+    :linenos:
+
+After we do our update we check to see if the number of miliseconds elapsed since drawing the current frame matches 60 frames-per-second. (Line 92) If that isn't true it will delay until the number of miliseconds pass to keep the framerate. This ensues that our program doesn't run faster than 60 frames-per-second.
+
+Summary
+-------
+
+In this chapter we demonstrated several key parts of a Pygame program. We talked about how Pygame draws on the screen, introduced the Rectangle drawing primitive, and showed how to set the color of both the background amd the Rectangles we drew. We showed how the event loop works, and demonstrated a simple routine to move our greeting across the screen interactively. And we added a delay so our program runs at a consistent frame-rate.
+
+In the next chapter we'll build on these concepts to create a simple game.

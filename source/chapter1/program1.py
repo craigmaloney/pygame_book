@@ -10,6 +10,7 @@ def main():
     pygame.display.set_mode(SCREENRECT.size)
 
 if __name__ == '__main__':
+    pygame.init()
     main()
     pygame.quit()
     sys.exit()
