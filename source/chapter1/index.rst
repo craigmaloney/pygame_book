@@ -1,5 +1,5 @@
-"Hello World" in Pygame
-=======================
+Hello Pygame
+============
 
 This chapter will cover the basic scaffolding for a Pygame game. We'll cover:
  * The basic structure of a Pygame program
